@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/new/images">
+        <file>pauseButtonIcon.png</file>
+        <file>playButtonIcon.png</file>
+        <file>antenna.png</file>
+    </qresource>
+</RCC>
