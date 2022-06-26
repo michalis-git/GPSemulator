@@ -13,10 +13,6 @@ TEMPLATE = app
 
 
 macx: {
-#  VERSION = $${THE_APP_VERSION}.$${THE_APP_BUILD}
-#  QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.12
-
-
   # Copy the custom Info.plist to the app bundle
   plist.path = "$$DESTDIR/$$join(TARGET,,,.app)/Contents"
   plist.files = Info.plist
@@ -27,18 +23,19 @@ macx: {
 }
 
 SOURCES += main.cpp\
-        dialog.cpp \
     mainwindow.cpp \
-    initdialog.cpp
+    initdialog.cpp \
+    nmeaDirDialog.cpp
 
-HEADERS  += dialog.h \
+HEADERS  += \
     mainwindow.h \
-    initdialog.h
+    initdialog.h \
+    nmeaDirDialog.h
 
 FORMS    += \
-    dialog.ui \
     mainwindow.ui \
-    initdialog.ui
+    initdialog.ui \
+    nmeaDirDialog.ui
 
 RESOURCES += \
     resourses.qrc \

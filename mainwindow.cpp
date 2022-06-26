@@ -11,13 +11,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#include <QSettings>
+ #include <QStandardPaths>
 
-MainWindow::MainWindow(QWidget *parent, QString dirPath)
+MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow)
 {
   ui->setupUi(this);
-
-  dirPathPublic = dirPath; /*sets the path of the file in a public variable*/
 
   //    initialiazing values (coordinates, azimuth and altidude)
   Edeg = 23; Emin = 0.9783;
@@ -64,7 +64,8 @@ void MainWindow::onPauseButtonClicked() {
 void MainWindow::moveDevice() {
   double dx, dy;
   if (ui->startButton->isEnabled()) {
-    dx = 0; dy = 0;
+    dx = 0;
+    dy = 0;
   } else {
     dx   = qrand() % 9  * 0.0002;
     dy   = qrand() % 8  * 0.00014;
@@ -90,7 +91,8 @@ void MainWindow::moveDevice() {
 
   if (angle <= 359)
     angle = angle + 1;
-  else angle = 001.0;
+  else
+    angle = 001.0;
 
   QString str_Edeg, str_Emin, str_Ndeg, str_Nmin;
   QString str_angle, str_alt;
@@ -128,7 +130,16 @@ void MainWindow::moveDevice() {
   ui->hLineEdit->setText(str_alt);
 
   //    inserts the NMEA sentence both into the file and the textbox
-  QFile data(dirPathPublic + "/NMEA.txt");
+  QSettings settings;
+  QString documentsLication = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+  QString nmeaLocationPath = settings.value("NMEAfileLocation", documentsLication).toString();
+
+//  QDir nmeaDir(nmeaLocationPath);
+//  if (!nmeaDir.exists()){
+//    dir.mkdir(".");
+//  }
+
+  QFile data(nmeaLocationPath + "/NMEA.txt");
   if (data.open(QFile::WriteOnly | QFile::Append)) {
     QTextStream out(&data);
     QString NMEA_sentence = "$GPGGA,074747.00,4057.65,N,2277.55,E,2,05,2.9," + str_alt + ",M,36.6,M,1,0000*6D" + "\n"
