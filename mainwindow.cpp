@@ -13,15 +13,14 @@
 #include <iostream>
 
 MainWindow::MainWindow(QWidget *parent, QString dirPath)
-    : QMainWindow(parent), ui(new Ui::MainWindow)
-{
+    : QMainWindow(parent), ui(new Ui::MainWindow) {
   ui->setupUi(this);
 
   dirPathPublic = dirPath; /*sets the path of the file in a public variable*/
 
   //    initialiazing values (coordinates, azimuth and altidude)
-  Edeg = 23; Emin = 0.9783;
-  Ndeg = 40; Nmin = 38.9562;
+  Edeg = 11; Emin = 40.498;
+  Ndeg = 48; Nmin = 13.28;
   angle = 000.0;
   alt = 022.11;
 
