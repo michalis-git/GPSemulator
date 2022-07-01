@@ -15,7 +15,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent, QString dirPath);
+    MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     QTimer initTimer;
     QTimer initDurationTimer;
@@ -26,7 +26,6 @@ public:
     int showSent;
     QString str_Edeg; QString str_Emin; QString str_Ndeg; QString str_Nmin;
     QString str_angle; QString str_alt;
-    QString dirPathPublic;
 
 private slots:
     void moveDevice();

@@ -14,9 +14,8 @@ class InitDialog : public QDialog
     Q_OBJECT
     
 public:
-    explicit InitDialog(QWidget *parent, QString dirPath);
+    explicit InitDialog(QWidget *parent = nullptr);
     ~InitDialog();
-    QString dirPathPublic;
     QTimer initTimer;
     QTimer initDurationTimer;
     QTimer timer;

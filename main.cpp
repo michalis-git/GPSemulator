@@ -1,10 +1,10 @@
-#include "dialog.h"
+#include "nmeaDirDialog.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Dialog w;
+    NmeaDirDialog w;
     w.show();
     
     return a.exec();
